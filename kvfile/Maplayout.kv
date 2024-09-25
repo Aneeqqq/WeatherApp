@@ -1,0 +1,57 @@
+<MapLayout>:
+    MapView:
+        id: mapview
+        lat: 50.6394
+        lon: 3.057
+        zoom: 8
+
+    Toolbar:
+        top: root.top
+        ShadedLabel:
+            text: "Longitude: {}".format(mapview.lon)
+        ShadedLabel:
+            text: "Latitude: {}".format(mapview.lat)
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: None
+        height: '48dp'
+        Button:
+            text: "Print Pin Location"
+        Label:
+            id: pin_label
+            text: "Pin Location: Not Set"
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: None
+        height: '48dp'
+        Button:
+            text: "+"
+            on_release: root.zoom_in()
+        Button:
+            text: "-"
+            on_release: root.zoom_out()
+        Button:
+            text: "Reset Zoom"
+            on_release:root.reset_zoom()
+
+
+<ShadedLabel@Label>:
+    size: self.texture_size
+    canvas.before:
+        Color:
+            rgba: .2, .2, .2, .6
+        Rectangle:
+            pos: self.pos
+            size: self.size
+<Toolbar@BoxLayout>:
+    size_hint_y: None
+    height: '48dp'
+    padding: '4dp'
+    spacing: '4dp'
+    canvas:
+        Color:
+            rgba: .2, .2, .2, .6
+        Rectangle:
+            pos: self.pos
+            size: self.size

@@ -1,0 +1,38 @@
+<Calendar@BoxLayout>:
+    orientation:'vertical'
+    size_hint:None,None
+    size:("300dp","140dp")
+
+    MDLabel:
+        text: "Start Date:"
+        halign: "left"
+    BoxLayout:
+        MDRaisedButton:
+            id: start_date_btn
+            text: "Select Start Date"
+            halign:"left"
+            on_release: app.show_date_picker('start')
+
+        MDLabel:
+            id: start_date_label
+            text:"2024-07-01"
+            halign: "center"
+        Label:
+
+    MDLabel:
+        text: "End Date:"
+        halign: "left"
+    BoxLayout:
+        MDRaisedButton:
+            id: end_date_btn
+            text: "Select End Date"
+            on_release: app.show_date_picker('end')
+
+        MDLabel:
+            id: end_date_label
+            text:"2024-07-21"
+            halign: "left"
+        Button:
+            id:fetch_weather
+            text:"Get Data"
+            on_release: app.get_weather()

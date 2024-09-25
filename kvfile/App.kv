@@ -1,0 +1,32 @@
+#kivy
+#kivymd
+#:include kvfile/CountryCityInput.kv
+#:include kvfile/Calendar.kv
+#:include kvfile/Maplayout.kv
+BoxLayout:
+    orientation: 'vertical'
+    CountryCityInput:
+        id:country_city_input
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}  # Center the widget
+    Calendar:
+        id:calendar
+    MapLayout:
+        id:map_window
+    #Button:
+<ContentPopup>:
+    size_hint: .9, .9
+    auto_dismiss: False
+    title: 'Weather Information'
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+            orientation:'horizontal'
+            id: weather_label
+            size_hint_y:0.29
+        BoxLayout:
+            size_hint_y: 0.7
+            id: plot_box
+        Button:
+            size_hint_y:0.01
+            text: 'Close'
+            on_release: root.dismiss()
